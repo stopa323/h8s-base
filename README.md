@@ -1,2 +1,2 @@
 # h8s-base
-Template repository for microservices based on FastAPI 
+Template repository for microservices based on FastAPI
