@@ -1,6 +1,7 @@
 import uvicorn
 
 from fastapi import FastAPI
+from mongoengine import connect, disconnect
 
 from base.common.config import get_config
 from base.router import pancake
@@ -12,7 +13,16 @@ app.include_router(pancake.router, prefix="/v1/pancakes")
 
 @app.on_event("startup")
 async def startup():
-    pass
+    cfg = get_config()
+    con = connect(db=cfg.get("db", "db_name"), host=cfg.get("db", "connection"))
+    con.server_info()
+    print("DB connection OK")
+
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    disconnect()
+    print("Disconnected from DB")
 
 
 if __name__ == "__main__":
