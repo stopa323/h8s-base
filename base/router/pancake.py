@@ -23,6 +23,6 @@ async def list_pancakes():
              description="Create brand new pancake type",
              response_model=api.PancakeType,
              tags=["Pancakes"])
-async def create_pancake_type(pancake_type: api.PancakeType):
+async def create_pancake_type(pancake_type: api.PancakeTypeCreate):
     object = provider.create_pancake_type(pancake_type)
     return object

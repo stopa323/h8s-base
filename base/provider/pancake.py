@@ -9,7 +9,8 @@ def list_pancakes() -> List[db.PancakeTypeObj]:
     return list(db_objects)
 
 
-def create_pancake_type(pancake_type: api.PancakeType) -> db.PancakeTypeObj:
+def create_pancake_type(pancake_type: api.PancakeTypeCreate) \
+        -> db.PancakeTypeObj:
     pancake_db = db.PancakeTypeObj(**pancake_type.dict())
     pancake_db.save()
     return pancake_db
