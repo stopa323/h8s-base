@@ -9,6 +9,8 @@ class PancakeType(BaseModel):
                              max_length=500)
 
     class Config:
+        orm_mode = True
+
         schema_extra = {
             "description": "Object represents Pancake type",
             "example": {

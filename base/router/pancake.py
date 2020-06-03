@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from typing import List
 
+from base.provider import pancake as provider
 from base.schema import pancake
 
 
@@ -13,4 +14,5 @@ router = APIRouter()
             response_model=List[pancake.PancakeType],
             tags=["Pancakes"])
 async def list_pancakes():
-    return {"pancakes": ["ChocolatePancake", "BananaPancake"]}
+    objects = provider.list_pancakes()
+    return objects
