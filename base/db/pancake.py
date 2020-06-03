@@ -1,6 +1,6 @@
 import mongoengine as me
 
 
-class PancakeType(me.Document):
+class PancakeTypeObj(me.Document):
     name = me.StringField()
     description = me.StringField()
